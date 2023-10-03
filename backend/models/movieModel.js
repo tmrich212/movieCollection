@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const movieSchema = mongoose.model(
+const movieSchema = mongoose.Schema(
     {
         title: {
             type: String,
@@ -20,4 +20,4 @@ const movieSchema = mongoose.model(
     }
 )
 
-export const movieModel = mongoose('Movie', movieSchema)
+export const Movie = mongoose.model('Movie', movieSchema);

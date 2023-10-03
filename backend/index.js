@@ -1,9 +1,13 @@
 import express from "express";
 import mongoose from "mongoose";
 import { mongoDB, PORT } from "./config.js";
+import movieRoutes from "./routes/movieRoutes.js"
 
 const app = express();
 
+app.use(express.json());
+
+app.use('/movies', movieRoutes)
 
 app.get('/', (request, response) => {
     console.log(request);
