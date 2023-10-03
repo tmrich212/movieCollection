@@ -50,7 +50,7 @@ router.get('/:id', async (request, response) =>{
         const { id } = request.params;
         const result = await Movie.findById(id);
 
-        return response.status(200).json(movie)
+        return response.status(200).json(result)
 
     }catch(error){
         console.log(error.message);
@@ -93,7 +93,7 @@ router.delete('/:id', async (request, response) => {
         const result = await Movie.findByIdAndDelete(id);
 
         if(!result){
-            return response.status(404).json({message: 'Book not found'})
+            return response.status(404).json({message: 'Movie not found'})
         }
         return response.status(200).send({ message: 'Movie deleted successfully'})
     } catch(error){
