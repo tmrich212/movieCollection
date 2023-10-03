@@ -1,14 +1,23 @@
-import express from 'express';
-import { PORT } from './config';
+import express from "express";
+import mongoose from "mongoose";
+import { mongoDB, PORT } from "./config.js";
 
 const app = express();
 
 
 app.get('/', (request, response) => {
     console.log(request);
-    return response.status(234).send('Listening on port 5555 :)')
+    return response.status(234).send(`Welcome to our movie collection page`)
 })
 
-app.listen(PORT, () => {
-    console.log(`listening on port: ${PORT}`)
+
+mongoose.connect(mongoDB)
+.then(() => {
+    app.listen(PORT, () => {
+        console.log(`Running on port: ${PORT}`)
+    })
+    console.log(`DB connected`)
+})
+.catch((error) => {
+    console.group(error)
 })
