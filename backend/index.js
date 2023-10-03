@@ -1,19 +1,25 @@
-import express from "express";
+import express, { request, response } from "express";
 import mongoose from "mongoose";
 import { mongoDB, PORT } from "./config.js";
 import movieRoutes from "./routes/movieRoutes.js"
+import { Movie } from './models/movieModel.js'
+import cors from 'cors';
 
 const app = express();
 
+//middleware to parse request body
 app.use(express.json());
 
-app.use('/movies', movieRoutes)
+//middleware to handle CORS policy
+app.use(cors());
 
 app.get('/', (request, response) => {
     console.log(request);
     return response.status(234).send(`Welcome to our movie collection page`)
 })
 
+//middleware for routes
+app.use('/movies', movieRoutes);
 
 mongoose.connect(mongoDB)
 .then(() => {
