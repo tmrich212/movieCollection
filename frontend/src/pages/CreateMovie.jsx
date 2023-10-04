@@ -63,7 +63,7 @@ const CreateMovie = () => {
           onChange={(e) => setReleaseYear(e.target.value)}
           className='border-2 py-2 w-full'/>
         </div>
-        <button className="p-2 m-8 bg-orange-600" onClick={handleSave}>Save Movie</button>
+        <button className="p-2 m-8 bg-orange-600 text-2xl" onClick={handleSave}>Save Movie</button>
       </div>
   </div>);
 };
